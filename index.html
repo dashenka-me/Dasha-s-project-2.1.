@@ -3,79 +3,97 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- EDIT: the title shows in the browser tab and in search results -->
-  <title>My Project Title</title>
-
-  <!-- This loads the styling. You usually don't need to touch it. -->
+  <title>Lexical map of Lolita</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 <main>
 
-  <!-- ===== HEADER: edit the title, the one-line description, and your name ===== -->
   <header>
     <h1>Lexical map of Lolita</h1>
-    <p class="subtitle">This project shows the map of thematic words in Lolita part 1 and 2</p>
+    <p class="subtitle">Mapping the distinctive vocabulary of Nabokov’s novel with TF‑IDF</p>
     <p class="byline">Darja Stryho &middot; <span id="year"></span></p>
   </header>
 
-  <!-- ===== ABSTRACT: a short paragraph for someone who has never seen this ===== -->
   <section>
     <h2>Abstract</h2>
     <p>
-      Two or three sentences. State the question, what you measured, and the one
-      result the figure below shows.
+      This project examines the evolution of thematic vocabulary in Vladimir Nabokov’s <em>Lolita</em>.
+      I split the novel into its 69 chapters, lemmatised the words, removed common stopwords and character names,
+      and computed TF‑IDF scores to identify the most distinctive terms in each chapter and in the two parts.
+      The figures below reveal a striking shift: Part One is saturated with words like “nymphet”, “enchanted”, and “hunter”,
+      while Part Two turns toward “diary”, “chess”, “hotel”, and “gun” – mirroring the narrative’s descent from obsession into pursuit and loss.
     </p>
   </section>
 
-  <!-- ===== FIGURE: replace figure.png with your own image ===== -->
   <section>
     <h2>Result</h2>
+
+    <!-- Word clouds -->
     <figure>
-      <img src="figure.png" alt="Describe your figure here, for screen readers and search">
-      <figcaption>Figure 1. One sentence saying what the figure shows.</figcaption>
+      <img src="tfidf_wordclouds.png" 
+           alt="TF-IDF weighted word clouds for Part One and Part Two"
+           style="max-width:100%; height:auto;">
+      <figcaption>Figure 1. TF‑IDF‑weighted word clouds for Part One (left) and Part Two (right).</figcaption>
     </figure>
+
+    <!-- Bar chart -->
+    <figure>
+      <img src="top15_distinctive_words.png" 
+           alt="Bar chart of top 15 distinctive words"
+           style="max-width:100%; height:auto;">
+      <figcaption>Figure 2. Top 15 overall distinctive words by mean TF‑IDF score.</figcaption>
+    </figure>
+
+    <!-- Frequency plot for 'nymphet' -->
+    <figure>
+      <img src="nymphet_frequency.png" 
+           alt="Frequency of the word 'nymphet' per chapter"
+           style="max-width:100%; height:auto;">
+      <figcaption>Figure 3. Frequency of the word “nymphet” across all 69 chapters.</figcaption>
+    </figure>
+
+    <p>The full chapter‑level data is available as a <a href="chapter_metadata.csv" download>CSV file</a>.</p>
   </section>
 
-  <!-- ===== DATA: edit the rows, or replace the whole table ===== -->
   <section>
     <h2>The numbers</h2>
-    <p>The full data is in <a href="data.csv">data.csv</a>.</p>
+    <p>The full data is in <a href="chapter_metadata.csv">chapter_metadata.csv</a>.</p>
     <table>
       <thead>
         <tr><th>Item</th><th>Measure</th><th>Value</th></tr>
       </thead>
       <tbody>
-        <tr><td>Example A</td><td>count</td><td>42</td></tr>
-        <tr><td>Example B</td><td>count</td><td>17</td></tr>
-        <tr><td>Example C</td><td>count</td><td>8</td></tr>
+        <tr><td>Most distinctive word (Part 1)</td><td>TF‑IDF (mean)</td><td>nymphet, enchanted, hunter, diary, seraph</td></tr>
+        <tr><td>Most distinctive word (Part 2)</td><td>TF‑IDF (mean)</td><td>chess, hotel, trail, clue, gun</td></tr>
+        <tr><td>Overall most distinctive word</td><td>TF‑IDF (max)</td><td>nymphet</td></tr>
+        <tr><td>Average MSTTR (content words)</td><td>ratio</td><td>Part 1: 0.XX / Part 2: 0.YY</td></tr>
       </tbody>
     </table>
+    <p><em>(MSTTR: Mean Segmental Type‑Token Ratio, computed over 500‑word chunks after lemmatisation and stopword removal.)</em></p>
   </section>
 
-  <!-- ===== METHOD: enough that a stranger could rebuild the result ===== -->
   <section>
     <h2>How it was made</h2>
     <p>
-      One short paragraph. Where the data came from, what produced the figure, and
-      how someone could rebuild it. The full detail lives in the
-      <a href="README.md">README</a>.
+      The full text of <em>Lolita</em> was downloaded from a public GitHub repository and split into 69 chapters using Python.
+      Words were lowercased, lemmatised with NLTK’s <code>WordNetLemmatizer</code>, and filtered by removing English stopwords
+      as well as a custom list of character names and common narrative words (e.g., “said”, “know”, “like”, “time”).
+      TF‑IDF vectors were computed per chapter with scikit‑learn’s <code>TfidfVectorizer</code>, then post‑filtered to exclude
+      words appearing in more than 20% of all chapters. The word clouds were generated from mean TF‑IDF scores per part.
+      The complete pipeline, including all figures and data, can be reproduced by running the Python notebook in this repository.
+      See the <a href="README.md">README</a> for full details.
     </p>
   </section>
 
-  <!-- ===== FOOTER: license and a link back to the source ===== -->
   <footer>
     <p>
       Text, images, and data: CC BY 4.0. Reuse freely with credit.
-      Source: <a href="https://github.com/christiancasey/measuring-manuscripts-project-template">this repository</a>.
+      Source: <a href="https://github.com/your‑username/your‑repo">this repository</a>.
     </p>
   </footer>
 
 </main>
-
-<!-- A tiny script that fills in the current year next to your name. Optional. -->
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
