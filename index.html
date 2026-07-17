@@ -19,12 +19,11 @@
     <h2>Abstract</h2>
     <p>
       This project applies TF‑IDF and lexical‑diversity measures to Vladimir Nabokov’s <em>Lolita</em>.
-      The 69‑chapter split shows that Part One is saturated with intimate, domestic terms
-      (<em>diary</em>, <em>key</em>, <em>toilet</em>, <em>frock</em>), while Part Two shifts to outdoor pursuit and performance
+      The 69‑chapter split illustrates the the importance of the aestheticism in the book. A slight difference can be noticed, however, sincce Part one is saturated with more intimate, domestic terms and Humbert's childhood
+      (<em>diary</em>, <em>key</em>, <em>toilet</em>, <em>frock</em>), while Part Two shifts to more outdoor pursuit because that is when Humbert sets out on a journey across America with Lolita, with the more distinctive words such as 
       (<em>ball</em>, <em>racket</em>, <em>hunter</em>, <em>journey</em>). The most distinctive word in the entire novel is
-      <em>seraph</em> – used only twice, both in the fictional foreword where Humbert styles himself a “seraph” –
-      a meta‑textual signal that the narrator’s self‑presentation is a key to the whole text.
-      The frequency of <em>nymphet</em> (plotted below) confirms it is overwhelmingly a Part‑One obsession.
+      <em>seraph</em> – used only twice, but through which Humbert idealizes his lost childhood experience and his first love Annabel Lee.
+      The frequency of <em>nymphet</em> across chapters (plotted below) confirms that is appears predominantly in Part one, dropping after the Part One/Part Two boundary, which might point to the fatc that Humbert first defines the nymphets, but as the story progresses, Lolita is shown more as a human than a mythological creature.
     </p>
   </section>
 
@@ -77,16 +76,14 @@
         <tr><td>Most distinctive word (Part 1)</td><td>TF‑IDF (mean)</td><td>sand, key, page, frock, born, sea, enchanted, toilet, box</td></tr>
         <tr><td>Most distinctive word (Part 2)</td><td>TF‑IDF (mean)</td><td>ball, racket, boy, hunter, party, train, girl, understand, journey</td></tr>
         <tr><td>Overall most distinctive word</td><td>TF‑IDF (max)</td><td>seraph</td></tr>
-        <tr><td>Average MSTTR (content words)</td><td>ratio</td><td>Part 1: 0.XX / Part 2: 0.YY</td></tr>
       </tbody>
     </table>
-    <p><em>(MSTTR: Mean Segmental Type‑Token Ratio, computed over 500‑word chunks after lemmatisation and stopword removal.)</em></p>
   </section>
 
   <section>
     <h2>How it was made</h2>
     <p>
-      The full text of <em>Lolita</em> was downloaded from a public GitHub repository and split into 69 chapters using Python.
+      The full text of <em>Lolita</em> was split into 69 chapters using Python.
       Words were lowercased, lemmatised with NLTK’s <code>WordNetLemmatizer</code>, and filtered by removing English stopwords
       as well as a custom list of character names and common narrative words (e.g., “said”, “know”, “like”, “time”).
       TF‑IDF vectors were computed per chapter with scikit‑learn’s <code>TfidfVectorizer</code>, then post‑filtered to exclude
