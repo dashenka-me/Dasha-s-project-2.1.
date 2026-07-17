@@ -18,11 +18,13 @@
   <section>
     <h2>Abstract</h2>
     <p>
-      This project examines the evolution of thematic vocabulary in Vladimir Nabokov’s <em>Lolita</em>.
-      I split the novel into its 69 chapters, lemmatised the words, removed common stopwords and character names,
-      and computed TF‑IDF scores to identify the most distinctive terms in each chapter and in the two parts.
-      The figures below reveal a striking shift: Part One is saturated with words like “nymphet”, “enchanted”, and “hunter”,
-      while Part Two turns toward “diary”, “chess”, “hotel”, and “gun” – mirroring the narrative’s descent from obsession into pursuit and loss.
+      This project applies TF‑IDF and lexical‑diversity measures to Vladimir Nabokov’s <em>Lolita</em>.
+      The 69‑chapter split shows that Part One is saturated with intimate, domestic terms
+      (<em>diary</em>, <em>key</em>, <em>toilet</em>, <em>frock</em>), while Part Two shifts to outdoor pursuit and performance
+      (<em>ball</em>, <em>racket</em>, <em>hunter</em>, <em>journey</em>). The most distinctive word in the entire novel is
+      <em>seraph</em> – used only twice, both in the fictional foreword where Humbert styles himself a “seraph” –
+      a meta‑textual signal that the narrator’s self‑presentation is a key to the whole text.
+      The frequency of <em>nymphet</em> (plotted below) confirms it is overwhelmingly a Part‑One obsession.
     </p>
   </section>
 
@@ -53,20 +55,12 @@
       <figcaption>Figure 3. Frequency of the word “nymphet” across all 69 chapters.</figcaption>
     </figure>
 
-    <!-- TTR per chapter -->
-    <figure>
-      <img src="ttr_per_chapter.png" 
-           alt="Type‑Token Ratio per chapter"
-           style="max-width:100%; height:auto;">
-      <figcaption>Figure 4. Type‑Token Ratio (filtered, lemmatised) for each chapter.</figcaption>
-    </figure>
-
     <!-- MSTTR per chapter -->
     <figure>
       <img src="msttr_per_chapter.png" 
            alt="Mean Segmental TTR per chapter"
            style="max-width:100%; height:auto;">
-      <figcaption>Figure 5. Mean Segmental TTR (500‑word chunks) per chapter – content words only.</figcaption>
+      <figcaption>Figure 4. Mean Segmental TTR (500‑word chunks) per chapter – content words only.</figcaption>
     </figure>
 
     <p>The full chapter‑level data is available as a <a href="chapter_metadata.csv" download>CSV file</a>.</p>
@@ -80,9 +74,9 @@
         <tr><th>Item</th><th>Measure</th><th>Value</th></tr>
       </thead>
       <tbody>
-        <tr><td>Most distinctive word (Part 1)</td><td>TF‑IDF (mean)</td><td>nymphet, enchanted, hunter, diary, seraph</td></tr>
-        <tr><td>Most distinctive word (Part 2)</td><td>TF‑IDF (mean)</td><td>chess, hotel, trail, clue, gun</td></tr>
-        <tr><td>Overall most distinctive word</td><td>TF‑IDF (max)</td><td>nymphet</td></tr>
+        <tr><td>Most distinctive word (Part 1)</td><td>TF‑IDF (mean)</td><td>sand, key, page, frock, born, sea, enchanted, toilet, box</td></tr>
+        <tr><td>Most distinctive word (Part 2)</td><td>TF‑IDF (mean)</td><td>ball, racket, boy, hunter, party, train, girl, understand, journey</td></tr>
+        <tr><td>Overall most distinctive word</td><td>TF‑IDF (max)</td><td>seraph</td></tr>
         <tr><td>Average MSTTR (content words)</td><td>ratio</td><td>Part 1: 0.XX / Part 2: 0.YY</td></tr>
       </tbody>
     </table>
