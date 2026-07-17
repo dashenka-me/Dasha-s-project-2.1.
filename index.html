@@ -11,14 +11,14 @@
 
   <header>
     <h1>Lexical map of Lolita</h1>
-    <p class="subtitle">Mapping the distinctive vocabulary of Nabokov’s novel with TF‑IDF</p>
+    <p class="subtitle">Mapping the distinctive vocabulary of Nabokov's novel with TF‑IDF</p>
     <p class="byline">Darja Stryho &middot; <span id="year"></span></p>
   </header>
 
   <section>
     <h2>Abstract</h2>
     <p>
-      This project applies TF‑IDF and lexical‑diversity measures to Vladimir Nabokov’s <em>Lolita</em>.
+      This project applies TF‑IDF and lexical‑diversity measures to Vladimir Nabokov's <em>Lolita</em>.
       The 69‑chapter split illustrates the the importance of the aestheticism in the book. A slight difference can be noticed, however, since Part one is saturated with more intimate, domestic terms and Humbert's childhood
       (<em>diary</em>, <em>key</em>, <em>toilet</em>, <em>frock</em>), while Part Two shifts to more outdoor pursuit because that is when Humbert sets out on a journey across America with Lolita, with the more distinctive words such as 
       (<em>ball</em>, <em>racket</em>, <em>hunter</em>, <em>journey</em>). The most distinctive word in the entire novel is
@@ -84,9 +84,9 @@
     <h2>How it was made</h2>
     <p>
       The full text of <em>Lolita</em> was split into 69 chapters using Python.
-      Words were lowercased, lemmatised with NLTK’s <code>WordNetLemmatizer</code>, and filtered by removing English stopwords
+      Words were lowercased, lemmatised with NLTK's <code>WordNetLemmatizer</code>, and filtered by removing English stopwords
       as well as a custom list of character names and common narrative words (e.g., “said”, “know”, “like”, “time”).
-      TF‑IDF vectors were computed per chapter with scikit‑learn’s <code>TfidfVectorizer</code>, then post‑filtered to exclude
+      TF‑IDF vectors were computed per chapter with scikit‑learn's <code>TfidfVectorizer</code>, then post‑filtered to exclude
       words appearing in more than 20% of all chapters. The word clouds were generated from mean TF‑IDF scores per part.
       The complete pipeline, including all figures and data, can be reproduced by running the Python notebook in this repository.
       See the <a href="README.md">README</a> for full details.
